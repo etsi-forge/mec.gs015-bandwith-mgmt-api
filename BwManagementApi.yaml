@@ -1,20 +1,15 @@
 swagger: '2.0'
 info:
   description: >-
-    An initial attempt to describe the MEC Bandwidth Management API using
-    OpenAPI
-  version: 0.3.3
-  title: Bandwidth Management API
-  termsOfService: TBD
-  contact:
-    name: TBD
-    url: TBD
+    The ETSI MEC ISG MEC015 Bandwidth Management API described using OpenAPI
+  version: 1.1.1
+  title: BWM API
   license:
-    name: ETSI MEC
-    url: TBD
+    name: ETSI Forge copyright notice
+    url: 'https://forge.etsi.org/etsi-forge-copyright-notice.txt'
 externalDocs:
-  description: ETSI MEC015 V0.3.3 Bandwidth Management API
-  url: 'https://docbox.etsi.org/ISG/MEC/70-Draft/0015BandMngtAPI'
+  description: ETSI MEC015 V1.1.1 Bandwidth Management API
+  url: 'http://www.etsi.org/deliver/etsi_gs/MEC/001_099/015/01.01.01_60/gs_MEC015v010101p.pdf'
 host: '127.0.0.1:8081'
 basePath: /bwm/v1
 schemes:
@@ -34,7 +29,6 @@ securityDefinitions:
     tokenUrl: 'https://oauth.exampleAPI/token'
     scopes:
       all: Single oauth2 scope for API
-
 parameters:
   Body.BwInfo:
     name: bwInfo
@@ -81,7 +75,7 @@ parameters:
     name: session_id
     in: query
     description: >-
-      A mobile edge application instance may use session_id as an input parameter to query the bandwitdth allocation of a list of sessions. 
+      A mobile edge application instance may use session_id as an input parameter to query the bandwidth allocation of a list of sessions. 
     required: false
     type: array
     items:
@@ -163,7 +157,7 @@ paths:
                 $ref: '#/definitions/ProblemDetails'
         '404':
           description: >-
-            TIt is used when a client provided a URI that cannot be mapped to a valid resource URI. In the returned ProblemDetails structure, the "detail" attribute should convey more information about the error.
+            It is used when a client provided a URI that cannot be mapped to a valid resource URI. In the returned ProblemDetails structure, the "detail" attribute should convey more information about the error.
           schema:
             properties:
               ProblemDetails:
@@ -171,7 +165,7 @@ paths:
   /bw_allocations/{allocationId}:
     get:
       description: >-
-        This method retrieves information about a a bandwidthAllocation resource. 
+        This method retrieves information about a specific bandwidthAllocation resource. 
       produces:
         - application/json
       parameters:
@@ -209,7 +203,7 @@ paths:
                 $ref: '#/definitions/ProblemDetails'
     put:
       description: >-
-        This method updates the information about a bandwidthAllocation resource. 
+        This method updates the information about a specific bandwidthAllocation resource. 
       produces:
         - application/json
       parameters:
@@ -256,7 +250,7 @@ paths:
                 $ref: '#/definitions/ProblemDetails'
     patch:
       description: >-
-        This method updates the information about a bandwidthAllocation resource. 
+        This method updates the information about a specific bandwidthAllocation resource. 
       produces:
         - application/json
       parameters:
@@ -302,7 +296,7 @@ paths:
               ProblemDetails:
                 $ref: '#/definitions/ProblemDetails'
     delete:
-      description: DELETE method is typically used in "Unregister from Bandwidth Management Service " procedure
+      description: Remove a specific bandwidthAllocation resource. DELETE method is typically used in "Unregister from Bandwidth Management Service" procedure
       produces:
         - application/json
       parameters:
@@ -411,16 +405,18 @@ definitions:
         $ref: '#/definitions/NanoSeconds'
   AppInsId:
     description: >-
-      application instance identifier
+      Application instance identifier
     type: string
   RequestType:
+    description: >-
+      Numeric value (0 - 255) corresponding to specific type of consumer
     type: string
     enum:
       - APPLICATION_SPECIFIC_BW_ALLOCATION
       - SESSION_SPECIFIC_BW_ALLOCATION
   SessionFilter:
     description: >-
-      Session filtering criteria, applicable whenWhen requestType is from type session specific:set as SESSION_SPECIFIC_BW_ALLOCATION Session filtering criteria. Any filtering criteria should suite shall define a single session only. In case multiple sessions match sessionFilterof suitable multiple sessions the request should shall be rejected
+      Session filtering criteria, applicable when requestType is set as SESSION_SPECIFIC_BW_ALLOCATION. Any filtering criteria shall define a single session only. In case multiple sessions match sessionFilter the request shall be rejected
     type: array
     items:
       type: object
@@ -452,7 +448,7 @@ definitions:
     enum:
       - 00 = Downlink (towards the UE)
       - 01 = Uplink (towards the application/session)
-      - 10 = symmetrical
+      - 10 = Symmetrical
   Seconds:
     description: >-
       The seconds part of the Time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC
@@ -460,7 +456,7 @@ definitions:
     format: uint32
   NanoSeconds:
     description: >-
-      Time in nanoseconds in Unix-time since January 1, 1970, 00:00:00 UTC
+      The nanoseconds part of the Time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC
     type: integer
     format: uint32
   SourceIp:
@@ -487,4 +483,3 @@ definitions:
     description: >-
       Protocol number
     type: string
-
