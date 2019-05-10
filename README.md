@@ -4,12 +4,12 @@ This repository contains OpenAPIs descriptions for the interfaces specified in E
 
 ## Online resources
 
-* [Navigate the API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/master/BwManagementApi.yaml).
-* [Edit the API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/master/BwManagementApi.yaml).
+* [Navigate the API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/develop/BwManagementApi.yaml).
+* [Edit the API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/develop/BwManagementApi.yaml).
 
 ## ETSI Forge Copyright statement
 
-Copyright (c) ETSI 2018.
+Copyright (c) ETSI 2019.
 
 This software is subject to copyrights owned by ETSI. Non-exclusive permission 
 is hereby granted, free of charge, to copy, reproduce and amend this file 

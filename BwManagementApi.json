@@ -1,484 +1,473 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "description": "The ETSI MEC ISG MEC015 Bandwidth Management API described using OpenAPI",
-      "version": "1.1.1",
-      "title": "BWM API",
-      "license": {
-        "name": "ETSI Forge copyright notice",
-        "url": "https://forge.etsi.org/etsi-forge-copyright-notice.txt"
-      }
+  "openapi": "3.0.2",
+  "info": {
+    "description": "The ETSI MEC ISG MEC015 Bandwidth Management API described using OpenAPI",
+    "version": "1.1.1",
+    "title": "BWM API",
+    "license": {
+      "name": "ETSI Forge copyright notice",
+      "url": "https://forge.etsi.org/etsi-forge-copyright-notice.txt"
     },
-    "externalDocs": {
-      "description": "ETSI MEC015 V1.1.1 Bandwidth Management API",
-      "url": "http://www.etsi.org/deliver/etsi_gs/MEC/001_099/015/01.01.01_60/gs_MEC015v010101p.pdf"
+    "contact": {
+      "email": "cti_support@etsi.org"
+    }
+  },
+  "externalDocs": {
+    "description": "ETSI MEC015 V1.1.1 Bandwidth Management API",
+    "url": "http://www.etsi.org/deliver/etsi_gs/MEC/001_099/015/01.01.01_60/gs_MEC015v010101p.pdf"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8081/bwm/v1"
     },
-    "host": "127.0.0.1:8081",
-    "basePath": "/bwm/v1",
-    "schemes": [
-      "http",
-      "https"
-    ],
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ],
-    "security": [
-      {
-        "OauthSecurity": [
-          "all"
-        ]
-      }
-    ],
-    "securityDefinitions": {
-      "OauthSecurity": {
-        "type": "oauth2",
-        "flow": "application",
-        "tokenUrl": "https://oauth.exampleAPI/token",
-        "scopes": {
-          "all": "Single oauth2 scope for API"
+    {
+      "url": "https://127.0.0.1:8081/bwm/v1"
+    }
+  ],
+  "security": [
+    {
+      "OauthSecurity": [
+        "all"
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "BandwithAllocation"
+    },
+    {
+      "name": "BandwithAllocations"
+    }
+  ],
+  "paths": {
+    "/bw_allocations": {
+      "get": {
+        "description": "This method retrieves information about a list of bandwidthAllocation resources. In queries, either \"app_instance_id\" or \"app_name\" or \"session_Id\"  or none of them shall be present.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Query.AppInstanceId"
+          },
+          {
+            "$ref": "#/components/parameters/Query.AppName"
+          },
+          {
+            "$ref": "#/components/parameters/Query.SessionId"
+          }
+        ],
+        "operationId": "BandwithAllocations_GET",
+        "tags": [
+          "BandwithAllocations"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/BandwithAllocations"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error.400"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error.403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error.404"
+          }
+        }
+      },
+      "post": {
+        "description": "This method is used to create a bandwidthAllocation resource.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/BwInfo"
+        },
+        "operationId": "BandwithAllocations_POST",
+        "tags": [
+          "BandwithAllocations"
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/BandwithAllocation.201"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error.400"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error.403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error.404"
+          }
         }
       }
     },
+    "/bw_allocations/{allocationId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/Path.AllocationId"
+        }
+      ],
+      "get": {
+        "description": "This method retrieves information about a specific bandwidthAllocation resource.",
+        "operationId": "BandwithAllocation_GET",
+        "tags": [
+          "BandwithAllocation"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/BandwithAllocation"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error.400"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error.403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error.404"
+          }
+        }
+      },
+      "put": {
+        "description": "This method updates the information about a specific bandwidthAllocation resource.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/BwInfo"
+        },
+        "operationId": "BandwithAllocation_PUT",
+        "tags": [
+          "BandwithAllocation"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/BandwithAllocation"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error.400"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error.403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error.404"
+          },
+          "412": {
+            "$ref": "#/components/responses/Error.412"
+          }
+        }
+      },
+      "patch": {
+        "description": "This method updates the information about a specific bandwidthAllocation resource.",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/BwInfoDeltas"
+        },
+        "operationId": "BandwithAllocation_PAT",
+        "tags": [
+          "BandwithAllocation"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/BandwithAllocation"
+          },
+          "400": {
+            "$ref": "#/components/responses/Error.400"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error.403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error.404"
+          },
+          "412": {
+            "$ref": "#/components/responses/Error.412"
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove a specific bandwidthAllocation resource. DELETE method is typically used in \"Unregister from Bandwidth Management Service\" procedure",
+        "operationId": "BandwithAllocation_DEL",
+        "tags": [
+          "BandwithAllocation"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "$ref": "#/components/responses/Error.403"
+          },
+          "404": {
+            "$ref": "#/components/responses/Error.404"
+          }
+        }
+      }
+    }
+  },
+  "components": {
     "parameters": {
-      "Body.BwInfo": {
-        "name": "bwInfo",
-        "in": "body",
-        "description": "BwInfo with updated information is included as entity body of the request",
-        "required": true,
-        "schema": {
-          "$ref": "#/definitions/BwInfo"
-        }
-      },
-      "Body.BwInfoDeltas": {
-        "name": "bwInfoDeltas",
-        "in": "body",
-        "description": "Description of the changes to instruct the server how to modify the resource representation. ",
-        "required": true,
-        "schema": {
-          "$ref": "#/definitions/BwInfoDeltas"
-        }
-      },
       "Path.AllocationId": {
         "name": "allocationId",
         "in": "path",
         "description": "Represents a bandwidth allocation instance",
         "required": true,
-        "type": "string"
+        "schema": {
+          "type": "string"
+        }
       },
       "Query.AppInstanceId": {
         "name": "app_instance_id",
         "in": "query",
-        "description": "A mobile edge application instance may use multiple app_instance_ids as an input parameter to query the bandwidth allocation of a list of mobile edge application instances. ",
+        "description": "A MEC application instance may use multiple app_instance_ids as an input parameter to query the bandwidth allocation of a list of mobile edge application instances.",
         "required": false,
-        "type": "array",
-        "items": {
-          "type": "string"
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "Query.AppName": {
         "name": "app_name",
         "in": "query",
-        "description": "A mobile edge application instance may use multiple ser_names as an input parameter to query the bandwidth allocation of a list of mobile edge application instances. ",
+        "description": "A MEC application instance may use multiple ser_names as an input parameter to query the bandwidth allocation of a list of mobile edge application instances.",
         "required": false,
-        "type": "array",
-        "items": {
-          "type": "string"
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "Query.SessionId": {
         "name": "session_id",
         "in": "query",
-        "description": "A mobile edge application instance may use session_id as an input parameter to query the bandwidth allocation of a list of sessions. ",
+        "description": "A MEC application instance may use session_id as an input parameter to query the bandwidth allocation of a list of sessions.",
         "required": false,
-        "type": "array",
-        "items": {
-          "type": "string"
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
-    "paths": {
-      "/bw_allocations": {
-        "get": {
-          "description": "This method retrieves information about a list of bandwidthAllocation resources",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "$ref": "#/parameters/Query.AppInstanceId"
-            },
-            {
-              "$ref": "#/parameters/Query.AppName"
-            },
-            {
-              "$ref": "#/parameters/Query.SessionId"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Upon success, a response body containing an array of the bandwidthAllocations is returned.",
-              "schema": {
-                "required": [
-                  "bwInfo"
-                ],
-                "properties": {
-                  "bwInfo": {
-                    "$ref": "#/definitions/BwInfo"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "It is used to indicate that incorrect parameters were passed to the request. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "403": {
-              "description": "The operation is not allowed given the current status of the resource. More information should be provided in the \"detail\" attribute of the \"ProblemDetails\" structure.",
-              "schema": {
-                "required": [
-                  "ProblemDetails"
-                ],
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "It is used when a client provided a URI that cannot be mapped to a valid resource URI. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "description": "This method is used to create a bandwidthAllocation resource.",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "$ref": "#/parameters/Body.BwInfo"
-            }
-          ],
-          "responses": {
-            "201": {
-              "description": "Upon success, the HTTP response shall include a \"Location\" HTTP header that contains the resource URI of the created resource.",
-              "schema": {
-                "required": [
-                  "bwInfo"
-                ],
-                "properties": {
-                  "bwInfo": {
-                    "$ref": "#/definitions/BwInfo"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "It is used to indicate that incorrect parameters were passed to the request. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "403": {
-              "description": "The operation is not allowed given the current status of the resource. More information should be provided in the \"detail\" attribute of the \"ProblemDetails\" structure.",
-              "schema": {
-                "required": [
-                  "ProblemDetails"
-                ],
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "It is used when a client provided a URI that cannot be mapped to a valid resource URI. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
+    "requestBodies": {
+      "BwInfo": {
+        "description": "Bandwidth Allocation information",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BwInfo"
             }
           }
         }
       },
-      "/bw_allocations/{allocationId}": {
-        "get": {
-          "description": "This method retrieves information about a specific bandwidthAllocation resource. ",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "$ref": "#/parameters/Path.AllocationId"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "It is used to indicate nonspecific success. The response body contains a representation of the resource.",
-              "schema": {
-                "required": [
-                  "bwInfo"
-                ],
-                "properties": {
-                  "bwInfo": {
-                    "$ref": "#/definitions/BwInfo"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "It is used to indicate that incorrect parameters were passed to the request. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "403": {
-              "description": "The operation is not allowed given the current status of the resource. More information shall be provided in the \"detail\" attribute of the \"ProblemDetails\" structure. required:\n  - ProblemDetails\nproperties:\n  ProblemDetails:\n    $ref: '#/definitions/ProblemDetails'"
-            },
-            "404": {
-              "description": "It is used when a client provided a URI that cannot be mapped to a valid resource URI. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "put": {
-          "description": "This method updates the information about a specific bandwidthAllocation resource. ",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "$ref": "#/parameters/Path.AllocationId"
-            },
-            {
-              "$ref": "#/parameters/Body.BwInfo"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Upon success, a response body containing data type describing the updated BwInfo is returned.",
-              "schema": {
-                "required": [
-                  "bwInfo"
-                ],
-                "properties": {
-                  "bwInfo": {
-                    "$ref": "#/definitions/BwInfo"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "It is used to indicate that incorrect parameters were passed to the request. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "403": {
-              "description": "The operation is not allowed given the current status of the resource. More information shall be provided in the \"detail\" attribute of the \"ProblemDetails\" structure.",
-              "schema": {
-                "required": [
-                  "ProblemDetails"
-                ],
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "It is used when a client provided a URI that cannot be mapped to a valid resource URI. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "412": {
-              "description": "It is used when a condition has failed during conditional requests, e.g. when using ETags to avoid write conflicts. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "patch": {
-          "description": "This method updates the information about a specific bandwidthAllocation resource. ",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "$ref": "#/parameters/Path.AllocationId"
-            },
-            {
-              "$ref": "#/parameters/Body.BwInfoDeltas"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Upon success, a response body containing data type describing the updated BwInfo is returned.",
-              "schema": {
-                "required": [
-                  "bwInfo"
-                ],
-                "properties": {
-                  "bwInfo": {
-                    "$ref": "#/definitions/BwInfo"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "It is used to indicate that incorrect parameters were passed to the request. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "403": {
-              "description": "The operation is not allowed given the current status of the resource. More information shall be provided in the \"detail\" attribute of the \"ProblemDetails\" structure.",
-              "schema": {
-                "required": [
-                  "ProblemDetails"
-                ],
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "It is used when a client provided a URI that cannot be mapped to a valid resource URI. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "412": {
-              "description": "It is used when a condition has failed during conditional requests, e.g. when using ETags to avoid write conflicts. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "delete": {
-          "description": "Remove a specific bandwidthAllocation resource. DELETE method is typically used in \"Unregister from Bandwidth Management Service\" procedure",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "$ref": "#/parameters/Path.AllocationId"
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "No Content"
-            },
-            "403": {
-              "description": "The operation is not allowed given the current status of the resource. More information shall be provided in the \"detail\" attribute of the \"ProblemDetails\" structure.",
-              "schema": {
-                "required": [
-                  "ProblemDetails"
-                ],
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "It is used when a client provided a URI that cannot be mapped to a valid resource URI. In the returned ProblemDetails structure, the \"detail\" attribute should convey more information about the error.",
-              "schema": {
-                "properties": {
-                  "ProblemDetails": {
-                    "$ref": "#/definitions/ProblemDetails"
-                  }
-                }
-              }
+      "BwInfoDeltas": {
+        "description": "Description of the changes to instruct the server how to modify the Bandwidth Allocation information.",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BwInfoDeltas"
             }
           }
         }
       }
     },
-    "definitions": {
+    "links": {
+      "GetBandwithAllocation": {
+        "operationId": "BandwithAllocation_GET",
+        "description": "The `allocationId` value returned in the response can be used as the `allocationId` parameter in 'GET .../bw_allocations/{allocationId}''",
+        "parameters": {
+          "description": "regex = \\/bwm\\/v1\\/bw_allocations\\/(.*); allocationId = location.match(regex)[1]; where \"location\" is the location header uri returned from operationId BandwithAllocations_POST  ",
+          "allocationId": "TBC"
+        }
+      },
+      "PatBandwithAllocation": {
+        "operationId": "BandwithAllocation_PAT",
+        "description": "The `allocationId` value returned in the response can be used as the `allocationId` parameter in 'PATCH .../bw_allocations/{allocationId}''",
+        "parameters": {
+          "description": "regex = \\/bwm\\/v1\\/bw_allocations\\/(.*); allocationId = location.match(regex)[1]; where \"location\" is the location header uri returned from operationId BandwithAllocations_POST  ",
+          "allocationId": "TBC"
+        }
+      },
+      "PutBandwithAllocation": {
+        "operationId": "BandwithAllocation_PUT",
+        "description": "The `allocationId` value returned in the response can be used as the `allocationId` parameter in 'PUT .../bw_allocations/{allocationId}''",
+        "parameters": {
+          "description": "regex = \\/bwm\\/v1\\/bw_allocations\\/(.*); allocationId = location.match(regex)[1]; where \"location\" is the location header uri returned from operationId BandwithAllocations_POST  ",
+          "allocationId": "TBC"
+        }
+      },
+      "DelBandwithAllocation": {
+        "operationId": "BandwithAllocation_DEL",
+        "description": "The `allocationId` value returned in the response can be used as the `allocationId` parameter in 'DELETE .../bw_allocations/{allocationId}''",
+        "parameters": {
+          "description": "regex = \\/bwm\\/v1\\/bw_allocations\\/(.*); allocationId = location.match(regex)[1]; where \"location\" is the location header uri returned from operationId BandwithAllocations_POST  ",
+          "allocationId": "TBC"
+        }
+      }
+    },
+    "responses": {
+      "BandwithAllocation": {
+        "description": "Bandwidth Allocation.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BwInfo"
+            }
+          }
+        }
+      },
+      "BandwithAllocation.201": {
+        "description": "Bandwidth Allocation.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BwInfo"
+            }
+          }
+        },
+        "headers": {
+          "location": {
+            "description": "The resource URI of the created resource",
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      "BandwithAllocations": {
+        "description": "Bandwidth Allocations.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "$ref": "#/components/schemas/BwInfo"
+              }
+            }
+          }
+        },
+        "links": {
+          "getBandwithAllocation": {
+            "$ref": "#/components/links/GetBandwithAllocation"
+          },
+          "patBandwithAllocation": {
+            "$ref": "#/components/links/PatBandwithAllocation"
+          },
+          "putBandwithAllocation": {
+            "$ref": "#/components/links/PutBandwithAllocation"
+          },
+          "delBandwithAllocation": {
+            "$ref": "#/components/links/DelBandwithAllocation"
+          }
+        }
+      },
+      "Error.400": {
+        "description": "Bad Request. It is used to indicate that incorrect parameters were passed to the request.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/ProblemDetails"
+            }
+          },
+          "text/plain": {
+            "schema": {
+              "$ref": "#/components/schemas/Empty"
+            }
+          }
+        }
+      },
+      "Error.401": {
+        "description": "Unauthorized. It is used when the client did not submit the appropriate credentials.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/ProblemDetails"
+            }
+          },
+          "text/plain": {
+            "schema": {
+              "$ref": "#/components/schemas/Empty"
+            }
+          }
+        }
+      },
+      "Error.403": {
+        "description": "Forbidden. The operation is not allowed given the current status of the resource. ",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/ProblemDetails"
+            }
+          }
+        }
+      },
+      "Error.404": {
+        "description": "Not Found. It is used when a client provided a URI that cannot be mapped  to a valid resource URI.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/ProblemDetails"
+            }
+          },
+          "text/plain": {
+            "schema": {
+              "$ref": "#/components/schemas/Empty"
+            }
+          }
+        }
+      },
+      "Error.412": {
+        "description": "Precondition Failed. It is used when a condition has failed during conditional requests,  e.g. when using ETags to avoid write conflicts.",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/ProblemDetails"
+            }
+          },
+          "text/plain": {
+            "schema": {
+              "$ref": "#/components/schemas/Empty"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OauthSecurity": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://oauth.exampleAPI/token",
+            "scopes": {
+              "all": "Single oauth2 scope for API"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Empty": {
+        "description": "Empty schema"
+      },
       "ProblemDetails": {
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/definitions/Problem.type"
+            "$ref": "#/components/schemas/Problem.type"
           },
           "title": {
-            "$ref": "#/definitions/Problem.title"
+            "$ref": "#/components/schemas/Problem.title"
           },
           "status": {
-            "$ref": "#/definitions/Problem.status"
+            "$ref": "#/components/schemas/Problem.status"
           },
           "detail": {
-            "$ref": "#/definitions/Problem.detail"
+            "$ref": "#/components/schemas/Problem.detail"
           },
           "instance": {
-            "$ref": "#/definitions/Problem.instance"
+            "$ref": "#/components/schemas/Problem.instance"
           }
         }
       },
@@ -516,49 +505,49 @@
         ],
         "properties": {
           "timeStamp": {
-            "$ref": "#/definitions/TimeStamp"
+            "$ref": "#/components/schemas/TimeStamp"
           },
           "appInsId": {
-            "$ref": "#/definitions/AppInsId"
+            "$ref": "#/components/schemas/AppInsId"
           },
           "requestType": {
-            "$ref": "#/definitions/RequestType"
+            "$ref": "#/components/schemas/RequestType"
           },
           "sessionFilter": {
-            "$ref": "#/definitions/SessionFilter"
+            "$ref": "#/components/schemas/SessionFilter"
           },
           "fixedBWPriority": {
-            "$ref": "#/definitions/FixedBWPriority"
+            "$ref": "#/components/schemas/FixedBWPriority"
           },
           "fixedAllocation": {
-            "$ref": "#/definitions/FixedAllocation"
+            "$ref": "#/components/schemas/FixedAllocation"
           },
           "allocationDirection": {
-            "$ref": "#/definitions/AllocationDirection"
+            "$ref": "#/components/schemas/AllocationDirection"
           }
         }
       },
       "BwInfoDeltas": {
-        "description": "Conform to JSON merge patch format and processing rules specified IETF RFC 7396 [8], this type represents the attributes whose value are allowed to be updated with HTTP PATCH method in content format JSON",
+        "description": "Conform to JSON merge patch format and processing rules specified IETF RFC 7396, this type represents the attributes whose value are allowed to be updated with HTTP PATCH method in content format JSON",
         "type": "object",
         "properties": {
           "appInsId": {
-            "$ref": "#/definitions/AppInsId"
+            "$ref": "#/components/schemas/AppInsId"
           },
           "requestType": {
-            "$ref": "#/definitions/RequestType"
+            "$ref": "#/components/schemas/RequestType"
           },
           "sessionFilter": {
-            "$ref": "#/definitions/SessionFilter"
+            "$ref": "#/components/schemas/SessionFilter"
           },
           "fixedBWPriority": {
-            "$ref": "#/definitions/FixedBWPriority"
+            "$ref": "#/components/schemas/FixedBWPriority"
           },
           "fixedAllocation": {
-            "$ref": "#/definitions/FixedAllocation"
+            "$ref": "#/components/schemas/FixedAllocation"
           },
           "allocationDirection": {
-            "$ref": "#/definitions/AllocationDirection"
+            "$ref": "#/components/schemas/AllocationDirection"
           }
         }
       },
@@ -570,10 +559,10 @@
         ],
         "properties": {
           "seconds": {
-            "$ref": "#/definitions/Seconds"
+            "$ref": "#/components/schemas/Seconds"
           },
           "nanoSeconds": {
-            "$ref": "#/definitions/NanoSeconds"
+            "$ref": "#/components/schemas/NanoSeconds"
           }
         }
       },
@@ -587,7 +576,8 @@
         "enum": [
           "APPLICATION_SPECIFIC_BW_ALLOCATION",
           "SESSION_SPECIFIC_BW_ALLOCATION"
-        ]
+        ],
+        "example": "APPLICATION_SPECIFIC_BW_ALLOCATION"
       },
       "SessionFilter": {
         "description": "Session filtering criteria, applicable when requestType is set as SESSION_SPECIFIC_BW_ALLOCATION. Any filtering criteria shall define a single session only. In case multiple sessions match sessionFilter the request shall be rejected",
@@ -596,19 +586,19 @@
           "type": "object",
           "properties": {
             "sourceIp": {
-              "$ref": "#/definitions/SourceIp"
+              "$ref": "#/components/schemas/SourceIp"
             },
             "sourcePort": {
-              "$ref": "#/definitions/SourcePort"
+              "$ref": "#/components/schemas/SourcePort"
             },
             "dstAddress": {
-              "$ref": "#/definitions/DstAddress"
+              "$ref": "#/components/schemas/DstAddress"
             },
             "dstPort": {
-              "$ref": "#/definitions/DstPort"
+              "$ref": "#/components/schemas/DstPort"
             },
             "protocol": {
-              "$ref": "#/definitions/Protocol"
+              "$ref": "#/components/schemas/Protocol"
             }
           }
         }
@@ -631,7 +621,8 @@
           "00 = Downlink (towards the UE)",
           "01 = Uplink (towards the application/session)",
           "10 = Symmetrical"
-        ]
+        ],
+        "example": "00"
       },
       "Seconds": {
         "description": "The seconds part of the Time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC",
@@ -648,7 +639,7 @@
         "type": "string"
       },
       "SourcePort": {
-        "description": "Source port identity of session ",
+        "description": "Source port identity of session",
         "type": "array",
         "items": {
           "type": "string"
@@ -659,7 +650,7 @@
         "type": "string"
       },
       "DstPort": {
-        "description": "Destination port identity of session ",
+        "description": "Destination port identity of session",
         "type": "array",
         "items": {
           "type": "string"
@@ -671,3 +662,4 @@
       }
     }
   }
+}
