@@ -4,12 +4,14 @@ This repository contains OpenAPIs descriptions for the interfaces specified in E
 
 ## Online resources
 
-* [Navigate the API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/develop/BwManagementApi.yaml).
-* [Edit the API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/develop/BwManagementApi.yaml).
+* [Navigate the Bandwidth Management API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/stf593/BwManagementApi.yaml).
+* [Edit the Bandwidth Management API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/stf593/BwManagementApi.yaml).
+
+* [Navigate the Traffic Steering API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/stf593/TrafficSteeringApi.yaml).
+* [Edit the Traffic Steering API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/stf593/TrafficSteeringApi.yaml).
 
 ## License
 
-Unless specified otherwise, the content of this repository and the files contained 
+Unless specified otherwise, the content of this repository and the files contained
 are released under the BSD-3-Clause license.
 See the attached LICENSE file or visit https://forge.etsi.org/legal-matters.
-
