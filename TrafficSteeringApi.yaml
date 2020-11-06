@@ -1,6 +1,7 @@
 openapi: 3.0.0
-
 info:
+  contact:
+    url: https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api
   title: 'ETSI GS MEC 015 Multi-access Traffic Steering APIs'
   version: 2.1.1
   description: The present document focuses on the Multi-access Traffic Steering multi-access edge service. It describes the related application policy information including authorization and access control, information flows, required information and service aggregation patterns. The present document specifies the necessary API with the data model and data format.
@@ -13,13 +14,16 @@ externalDocs:
   url: 'https://www.etsi.org/deliver/etsi_gs/MEC/001_099/015/02.01.01_60/gs_MEC015v020101p.pdf'
 
 servers:
-  - url: 'https://{apiRoot}/mts/v1'
+  - url: 'https://localhost/mts/v1'
+
+tags:
+- name: "mts"
 
 paths:
   /mts_capability_info:
     get:
       tags:
-      - ""
+      - "mts"
       summary: "Retrieve the MTS capability informations"
       description: "Used to query information about the MTS information. Typically used in the 'Get MTS service Info from the MTS Service' procedure as described in clause 6.2.6."
       operationId: "mtsCapabilityInfoGET"
@@ -43,7 +47,7 @@ paths:
   /mts_sessions:
     get:
       tags:
-      - ""
+      - "mts"
       summary: "Retrieve information about a list of MTS sessions"
       description: "Retrieves information about a list of MTS sessions. Typically used in the 'Get configured MTS Session Info from the MTS Service' procedure as described in clause 6.2.10."
       operationId: "mtsSessionsListGET"
@@ -71,7 +75,7 @@ paths:
           $ref: '#/components/responses/404'
     post:
       tags:
-      - ""
+      - "mts"
       summary: "Create a MTS session"
       description: "Used to create a MTS session. This method is typically used in 'Register application to the MTS Service' procedure as described in clause 6.2.7."
       operationId: "mtsSessionPOST"
@@ -105,7 +109,7 @@ paths:
   /mts_sessions/{sessionId}:
     get:
       tags:
-      - ""
+      - "mts"
       summary: "Retrieve information about specific MTS session"
       description: "Retrieves information about an individual MTS session. Typically used in the 'Get configured MTS Session Info from the MTS Service' procedure as described in clause 6.2.10."
       operationId: "mtsSessionGET"
@@ -129,7 +133,7 @@ paths:
           $ref: '#/components/responses/404'
     put:
       tags:
-      - ""
+      - "mts"
       summary: "Update the information about specific MTS session"
       description: "Updates the information about an individual MTS session. As specified in ETSI GS MEC 009 [6], the PUT HTTP method has 'replace' semantics. "
       operationId: "mtsSessionPUT"
@@ -165,7 +169,7 @@ paths:
           $ref: '#/components/responses/412'
     delete:
       tags:
-      - ""
+      - "mts"
       summary: "Remove specific MTS session"
       description: "DELETE method is typically used in 'Unregister from the MTS Service' procedure as described in clause 6.2.8."
       operationId: "mtsSessionDELETE"
@@ -266,13 +270,13 @@ components:
             properties:
               accessId:
                 type: integer
-                format: uint32
+                format: int32
                 description: Unique identifier for the access network connection
                 x-etsi-mec-cardinality: '1'
                 x-etsi-mec-origin-type: Uint32
               accessType:
                 type: integer
-                format: uint32
+                format: int32
                 description: "Numeric value (0-255) corresponding to specific type of access network as following:
                   0 = Unknown
                   1 = Any IEEE802.11-based WLAN technology
@@ -290,7 +294,7 @@ components:
                 x-etsi-mec-origin-type: Uint32
               metered:
                 type: integer
-                format: uint32
+                format: int32
                 description: 'Numeric value (0-255) corresponding to the following:
                   0: the connection is not metered (see note)
                   1: the connection is metered
@@ -314,7 +318,7 @@ components:
             4 = QoS, i.e. performing MTS based on the specific QoS requirements from the app'
           items:
             type: integer
-            format: uint32
+            format: int32
           minItems: 1
           type: array
           x-etsi-mec-cardinality: 1..N
@@ -324,13 +328,13 @@ components:
           properties:
             nanoSeconds:
               type: integer
-              format: uint32
+              format: int32
               description: Time in nanoseconds in Unix-time since January 1, 1970, 00:00:00 UTC
               x-etsi-mec-cardinality: '1'
               x-etsi-mec-origin-type: Uint32
             seconds:
               type: integer
-              format: uint32
+              format: int32
               description: Time in seconds in Unix-time since January 1, 1970, 00:00:00 UTC
               x-etsi-mec-cardinality: '1'
               x-etsi-mec-origin-type: Uint32
@@ -362,7 +366,7 @@ components:
             properties:
               dscp:
                 type: integer
-                format: uint32
+                format: int32
                 description: DSCP in the IPv4 header or Traffic Class in the IPv6 header
                 x-etsi-mec-cardinality: 0..1
                 x-etsi-mec-origin-type: Uint32
@@ -375,20 +379,20 @@ components:
                 description: Destination port identity of session
                 items:
                   type: integer
-                  format: uint32
+                  format: int32
                 minItems: 0
                 type: array
                 x-etsi-mec-cardinality: 0..N
                 x-etsi-mec-origin-type: Uint32
               flowlabel:
                 type: integer
-                format: uint32
+                format: int32
                 description: Flow Label in the IPv6 header, applicable only if the flow is IPv6
                 x-etsi-mec-cardinality: 0..1
                 x-etsi-mec-origin-type: Uint32
               protocol:
                 type: integer
-                format: uint32
+                format: int32
                 description: Protocol number
                 x-etsi-mec-cardinality: 0..1
                 x-etsi-mec-origin-type: Uint32
@@ -401,7 +405,7 @@ components:
                 description: Source port identity of session
                 items:
                   type: integer
-                  format: uint32
+                  format: int32
                 minItems: 0
                 type: array
                 x-etsi-mec-cardinality: 0..N
@@ -412,7 +416,7 @@ components:
           x-etsi-mec-origin-type: Structure (inlined)
         mtsMode:
           type: integer
-          format: uint32
+          format: int32
           description: 'Numeric value (0 - 255) corresponding to a specific MTS mode of the MTS session:
             0 = low cost, i.e. using the unmetered access network connection whenever it is available
             1 = low latency, i.e. using the access network connection with lower latency
@@ -427,31 +431,31 @@ components:
             maxJitter:
               description: tolerable jitter in [10 nanoseconds]
               type: integer
-              format: uint32
+              format: int32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
             maxLatency:
               description: tolerable (one-way) delay in [10 nanoseconds]
               type: integer
-              format: uint32
+              format: int32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
             maxLoss:
               description: tolerable packet loss rate in [1/10^x]
               type: integer
-              format: uint32
+              format: int32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
             minTpt:
               description: minimal throughput in [kbps]
               type: integer
-              format: uint32
+              format: int32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
             priority:
               description: "numeric value (0 - 255) corresponding to the traffic priority 0: low; 1: medium; 2: high; 3: critical"
               type: integer
-              format: uint32
+              format: int32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
           type: object
@@ -472,13 +476,13 @@ components:
           properties:
             nanoSeconds:
               type: integer
-              format: uint32
+              format: int32
               description: The nanoseconds part of the Time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC
               x-etsi-mec-cardinality: '1'
               x-etsi-mec-origin-type: Uint32
             seconds:
               type: integer
-              format: uint32
+              format: int32
               description: The seconds part of the Time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC
               x-etsi-mec-cardinality: '1'
               x-etsi-mec-origin-type: Uint32
@@ -527,7 +531,7 @@ components:
           x-etsi-mec-origin-type: URI
         status:
           description: The HTTP status code for this occurrence of the problem
-          format: uint32
+          format: int32
           type: integer
           x-etsi-mec-cardinality: 0..1
           x-etsi-mec-origin-type: Uint32
