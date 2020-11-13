@@ -42,12 +42,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "mtsCapabilityInfo": {
-                      "$ref": "#/components/schemas/MtsCapabilityInfo"
-                    }
-                  }
+                  "$ref": "#/components/schemas/MtsCapabilityInfo"
                 }
               }
             }
@@ -89,14 +84,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "mtsSessionInfo": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/MtsSessionInfo"
-                      }
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MtsSessionInfo"
                   }
                 }
               }
@@ -127,12 +117,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "MtsSessionInfo": {
-                    "$ref": "#/components/schemas/MtsSessionInfo"
-                  }
-                }
+                "$ref": "#/components/schemas/MtsSessionInfo"
               }
             }
           }
@@ -143,12 +128,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "mtsSessionInfo": {
-                      "$ref": "#/components/schemas/MtsSessionInfo"
-                    }
-                  }
+                  "$ref": "#/components/schemas/MtsSessionInfo"
                 }
               }
             }
@@ -184,12 +164,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "mtsSessionInfo": {
-                      "$ref": "#/components/schemas/MtsSessionInfo"
-                    }
-                  }
+                  "$ref": "#/components/schemas/MtsSessionInfo"
                 }
               }
             }
@@ -223,12 +198,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "mtsSessionInfo": {
-                    "$ref": "#/components/schemas/MtsSessionInfo"
-                  }
-                }
+                "$ref": "#/components/schemas/MtsSessionInfo"
               }
             }
           }
@@ -239,12 +209,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "mtsSessionInfo": {
-                      "$ref": "#/components/schemas/MtsSessionInfo"
-                    }
-                  }
+                  "$ref": "#/components/schemas/MtsSessionInfo"
                 }
               }
             }
@@ -297,14 +262,9 @@
       "400": {
         "description": "Bad Request : used to indicate that incorrect parameters were passed to the request.",
         "content": {
-          "application/json": {
+          "application/problem+json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "problemDetails": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
+              "$ref": "#/components/schemas/ProblemDetails"
             }
           }
         }
@@ -312,17 +272,9 @@
       "403": {
         "description": "Forbidden :  operation is not allowed given the current status of the resource.",
         "content": {
-          "application/json": {
+          "application/problem+json": {
             "schema": {
-              "type": "object",
-              "required": [
-                "problemDetails"
-              ],
-              "properties": {
-                "problemDetails": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
+              "$ref": "#/components/schemas/ProblemDetails"
             }
           }
         }
@@ -330,14 +282,9 @@
       "404": {
         "description": "Not Found :  used when a client provided a URI that cannot be mapped to a valid resource URI.",
         "content": {
-          "application/json": {
+          "application/problem+json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "problemDetails": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
+              "$ref": "#/components/schemas/ProblemDetails"
             }
           }
         }
@@ -345,14 +292,9 @@
       "412": {
         "description": "Precondition failed :  used when a condition has failed during conditional requests, e.g. when using ETags to avoid write conflicts when using PUT",
         "content": {
-          "application/json": {
+          "application/problem+json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "problemDetails": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
+              "$ref": "#/components/schemas/ProblemDetails"
             }
           }
         }

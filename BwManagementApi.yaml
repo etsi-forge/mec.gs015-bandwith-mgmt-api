@@ -37,12 +37,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  bwInfo:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/BwInfo"
+                type: array
+                items:
+                  $ref: "#/components/schemas/BwInfo"
         400:
           $ref: "#/components/responses/400"
         403:
@@ -62,22 +59,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                bwInfo:
-                  $ref: '#/components/schemas/BwInfo'
+              $ref: '#/components/schemas/BwInfo'
       responses:
         201:
           description: "Upon success, the HTTP response shall include a 'Location' HTTP header that contains the resource URI of the created resource."
           content:
             application/json:
               schema:
-                type: object
-                required:
-                - bwInfo
-                properties:
-                  bwInfo:
-                    $ref: "#/components/schemas/BwInfo"
+                $ref: "#/components/schemas/BwInfo"
         400:
           $ref: "#/components/responses/400"
         403:
@@ -99,12 +88,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                required:
-                  - bwInfo
-                properties:
-                  bwInfo:
-                    $ref: "#/components/schemas/BwInfo"
+                $ref: "#/components/schemas/BwInfo"
         400:
           $ref: "#/components/responses/400"
         403:
@@ -123,10 +107,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                bwInfo:
-                  $ref: '#/components/schemas/BwInfo'
+              $ref: '#/components/schemas/BwInfo'
       parameters:
         - $ref: '#/components/parameters/Path.allocationId'
       responses:
@@ -135,12 +116,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                required:
-                - bwInfo
-                properties:
-                  bwInfo:
-                    $ref: "#/components/schemas/BwInfo"
+                $ref: "#/components/schemas/BwInfo"
         400:
           $ref: "#/components/responses/400"
         403:
@@ -161,10 +137,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                bwInfoDeltas:
-                  $ref: '#/components/schemas/BwInfoDeltas'
+              $ref: '#/components/schemas/BwInfoDeltas'
       parameters:
         - $ref: '#/components/parameters/Path.allocationId'
       responses:
@@ -173,12 +146,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                required:
-                - bwInfo
-                properties:
-                  bwInfo:
-                    $ref: "#/components/schemas/BwInfo"
+                $ref: "#/components/schemas/BwInfo"
         400:
           $ref: "#/components/responses/400"
         403:
@@ -209,42 +177,28 @@ components:
     400:
       description: 'Bad Request : used to indicate that incorrect parameters were passed to the request.'
       content:
-        application/json:
+        application/problem+json:
           schema:
-            type: object
-            properties:
-              problemDetails:
-                $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/ProblemDetails'
     403:
       description: 'Forbidden :  operation is not allowed given the current status of the resource.'
       content:
-        application/json:
+        application/problem+json:
           schema:
-            type: object
-            required:
-              - problemDetails
-            properties:
-              problemDetails:
-                $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/ProblemDetails'
     404:
       description: 'Not Found :  used when a client provided a URI that cannot be mapped to a valid resource URI.'
       content:
-        application/json:
+        application/problem+json:
           schema:
-            type: object
-            properties:
-              problemDetails:
-                $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/ProblemDetails'
     412:
       description: 'Precondition failed :  used when a condition has failed during conditional requests, e.g. when
         using ETags to avoid write conflicts when using PUT'
       content:
-        application/json:
+        application/problem+json:
           schema:
-            type: object
-            properties:
-              problemDetails:
-                $ref: '#/components/schemas/ProblemDetails'
+            $ref: '#/components/schemas/ProblemDetails'
   parameters:
     Path.allocationId:
       name: allocationId
