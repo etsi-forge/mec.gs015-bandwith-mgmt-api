@@ -4,11 +4,11 @@ This repository contains OpenAPIs descriptions for the interfaces specified in E
 
 ## Online resources
 
-* [Navigate the Bandwidth Management API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/stf593/BwManagementApi.yaml).
-* [Edit the Bandwidth Management API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/stf593/BwManagementApi.yaml).
+* [Navigate the Bandwidth Management API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/raw/v2.1.1/BwManagementApi.yaml).
+* [Edit the Bandwidth Management API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/raw/v2.1.1/BwManagementApi.yaml).
 
-* [Navigate the Traffic Steering API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/stf593/TrafficSteeringApi.yaml).
-* [Edit the Traffic Steering API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/gitlab/mec/gs015-bandwith-mgmt-api/raw/stf593/TrafficSteeringApi.yaml).
+* [Navigate the Traffic Steering API in the browser](https://forge.etsi.org/swagger/ui/?url=https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/raw/v2.1.1/TrafficSteeringApi.yaml).
+* [Edit the Traffic Steering API online](https://forge.etsi.org/swagger/editor/?url=https://forge.etsi.org/rep/mec/gs015-bandwith-mgmt-api/raw/v2.1.1/TrafficSteeringApi.yaml).
 
 ## License
 
