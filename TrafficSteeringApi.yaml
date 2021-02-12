@@ -234,14 +234,14 @@ components:
             type: object
             properties:
               accessId:
+                format: uint32
                 type: integer
-                format: int32
                 description: Unique identifier for the access network connection
                 x-etsi-mec-cardinality: '1'
                 x-etsi-mec-origin-type: Uint32
               accessType:
+                format: uint32
                 type: integer
-                format: int32
                 description: "Numeric value (0-255) corresponding to specific type of access network as following:
                   0 = Unknown
                   1 = Any IEEE802.11-based WLAN technology
@@ -258,8 +258,8 @@ components:
                 x-etsi-mec-cardinality: '1'
                 x-etsi-mec-origin-type: Uint32
               metered:
+                format: uint32
                 type: integer
-                format: int32
                 description: 'Numeric value (0-255) corresponding to the following:
                   0: the connection is not metered (see note)
                   1: the connection is metered
@@ -283,7 +283,7 @@ components:
             4 = QoS, i.e. performing MTS based on the specific QoS requirements from the app'
           items:
             type: integer
-            format: int32
+            format: uint32
           minItems: 1
           type: array
           x-etsi-mec-cardinality: 1..N
@@ -292,15 +292,15 @@ components:
           description: Time stamp to indicate when the corresponding information elements are sent
           properties:
             nanoSeconds:
+              format: uint32
               type: integer
-              format: int32
               description: Time in nanoseconds in Unix-time since January 1, 1970, 00:00:00 UTC
               x-etsi-mec-cardinality: '1'
               x-etsi-mec-origin-type: Uint32
             seconds:
-              type: integer
-              format: int32
               description: Time in seconds in Unix-time since January 1, 1970, 00:00:00 UTC
+              format: uint32
+              type: integer
               x-etsi-mec-cardinality: '1'
               x-etsi-mec-origin-type: Uint32
           required:
@@ -330,8 +330,8 @@ components:
             type: object
             properties:
               dscp:
+                format: uint32
                 type: integer
-                format: int32
                 description: DSCP in the IPv4 header or Traffic Class in the IPv6 header
                 x-etsi-mec-cardinality: 0..1
                 x-etsi-mec-origin-type: Uint32
@@ -344,20 +344,20 @@ components:
                 description: Destination port identity of session
                 items:
                   type: integer
-                  format: int32
+                  format: uint32
                 minItems: 0
                 type: array
                 x-etsi-mec-cardinality: 0..N
                 x-etsi-mec-origin-type: Uint32
               flowlabel:
+                format: uint32
                 type: integer
-                format: int32
                 description: Flow Label in the IPv6 header, applicable only if the flow is IPv6
                 x-etsi-mec-cardinality: 0..1
                 x-etsi-mec-origin-type: Uint32
               protocol:
+                format: uint32
                 type: integer
-                format: int32
                 description: Protocol number
                 x-etsi-mec-cardinality: 0..1
                 x-etsi-mec-origin-type: Uint32
@@ -370,7 +370,7 @@ components:
                 description: Source port identity of session
                 items:
                   type: integer
-                  format: int32
+                  format: uint32
                 minItems: 0
                 type: array
                 x-etsi-mec-cardinality: 0..N
@@ -380,8 +380,8 @@ components:
           x-etsi-mec-cardinality: 1..N
           x-etsi-mec-origin-type: Structure (inlined)
         mtsMode:
+          format: uint32
           type: integer
-          format: int32
           description: 'Numeric value (0 - 255) corresponding to a specific MTS mode of the MTS session:
             0 = low cost, i.e. using the unmetered access network connection whenever it is available
             1 = low latency, i.e. using the access network connection with lower latency
@@ -396,31 +396,31 @@ components:
             maxJitter:
               description: tolerable jitter in [10 nanoseconds]
               type: integer
-              format: int32
+              format: uint32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
             maxLatency:
               description: tolerable (one-way) delay in [10 nanoseconds]
               type: integer
-              format: int32
+              format: uint32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
             maxLoss:
               description: tolerable packet loss rate in [1/10^x]
               type: integer
-              format: int32
+              format: uint32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
             minTpt:
               description: minimal throughput in [kbps]
               type: integer
-              format: int32
+              format: uint32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
             priority:
               description: "numeric value (0 - 255) corresponding to the traffic priority 0: low; 1: medium; 2: high; 3: critical"
               type: integer
-              format: int32
+              format: uint32
               x-etsi-mec-cardinality: 0..1
               x-etsi-mec-origin-type: Uint32
           type: object
@@ -440,14 +440,14 @@ components:
           description: 'Time stamp to indicate when the corresponding information elements are sent '
           properties:
             nanoSeconds:
+              format: uint32
               type: integer
-              format: int32
               description: The nanoseconds part of the Time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC
               x-etsi-mec-cardinality: '1'
               x-etsi-mec-origin-type: Uint32
             seconds:
+              format: uint32
               type: integer
-              format: int32
               description: The seconds part of the Time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC
               x-etsi-mec-cardinality: '1'
               x-etsi-mec-origin-type: Uint32
@@ -496,7 +496,7 @@ components:
           x-etsi-mec-origin-type: URI
         status:
           description: The HTTP status code for this occurrence of the problem
-          format: int32
+          format: uint32
           type: integer
           x-etsi-mec-cardinality: 0..1
           x-etsi-mec-origin-type: Uint32

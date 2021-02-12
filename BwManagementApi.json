@@ -457,15 +457,15 @@
             "description": "Time stamp to indicate when the corresponding information elements are sent",
             "properties": {
               "nanoSeconds": {
-                "type": "integer",
-                "format": "int32",
                 "description": "The nanoseconds part of the Time. Time is defined as Unix-time since January 1, 1970, 00:00:00 UTC",
+                "format": "uint32",
+                "type": "integer",
                 "x-etsi-mec-cardinality": "1",
                 "x-etsi-mec-origin-type": "Uint32"
               },
               "seconds": {
+                "format": "uint32",
                 "type": "integer",
-                "format": "int32",
                 "description": "The seconds part of the Time. Time is defined as Unixtime since January 1, 1970, 00:00:00 UTC",
                 "x-etsi-mec-cardinality": "1",
                 "x-etsi-mec-origin-type": "Uint32"
@@ -603,7 +603,7 @@
           },
           "status": {
             "description": "The HTTP status code for this occurrence of the problem",
-            "format": "int32",
+            "format": "uint32",
             "type": "integer",
             "x-etsi-mec-cardinality": "0..1",
             "x-etsi-mec-origin-type": "Uint32"
