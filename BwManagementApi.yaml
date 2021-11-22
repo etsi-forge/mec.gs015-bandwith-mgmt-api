@@ -32,7 +32,7 @@ paths:
         - $ref: '#/components/parameters/Query.app_name'
         - $ref: '#/components/parameters/Query.session_id'
       responses:
-        200:
+        "200":
           description: "Upon success, a response body containing an array of the bandwidthAllocations is returned."
           content:
             application/json:
@@ -40,11 +40,11 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/BwInfo"
-        400:
+        "400":
           $ref: "#/components/responses/400"
-        403:
+        "403":
           $ref: '#/components/responses/403'
-        404:
+        "404":
           $ref: '#/components/responses/404'
     post:
       tags:
@@ -61,17 +61,17 @@ paths:
             schema:
               $ref: '#/components/schemas/BwInfo'
       responses:
-        201:
+        "201":
           description: "Upon success, the HTTP response shall include a 'Location' HTTP header that contains the resource URI of the created resource."
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BwInfo"
-        400:
+        "400":
           $ref: "#/components/responses/400"
-        403:
+        "403":
           $ref: '#/components/responses/403'
-        404:
+        "404":
           $ref: '#/components/responses/404'
   /bw_allocations/{allocationId}:
     get:
@@ -83,17 +83,17 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Path.allocationId'
       responses:
-        200:
+        "200":
           description: "Used to indicate nonspecific success. The response body contains a representation of the resource."
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BwInfo"
-        400:
+        "400":
           $ref: "#/components/responses/400"
-        403:
+        "403":
           $ref: '#/components/responses/403'
-        404:
+        "404":
           $ref: '#/components/responses/404'
     put:
       tags:
@@ -111,19 +111,19 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Path.allocationId'
       responses:
-        200:
+        "200":
           description: "Used to indicate nonspecific success. The response body contains a representation of the resource."
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BwInfo"
-        400:
+        "400":
           $ref: "#/components/responses/400"
-        403:
+        "403":
           $ref: '#/components/responses/403'
-        404:
+        "404":
           $ref: '#/components/responses/404'
-        412:
+        "412":
           $ref: '#/components/responses/412'
     patch:
       tags:
@@ -141,19 +141,19 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Path.allocationId'
       responses:
-        200:
+        "200":
           description: "Used to indicate nonspecific success. The response body contains a representation of the resource."
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/BwInfo"
-        400:
+        "400":
           $ref: "#/components/responses/400"
-        403:
+        "403":
           $ref: '#/components/responses/403'
-        404:
+        "404":
           $ref: '#/components/responses/404'
-        412:
+        "412":
           $ref: '#/components/responses/412'
     delete:
       tags:
@@ -164,35 +164,35 @@ paths:
       parameters:
         - $ref: '#/components/parameters/Path.allocationId'
       responses:
-        204:
+        "204":
           $ref: '#/components/responses/204'
-        403:
+        "403":
           $ref: '#/components/responses/403'
-        404:
+        "404":
           $ref: '#/components/responses/404'
 components:
   responses:
-    204:
+    "204":
       description: "Upon success, a response 204 No Content without any response body is returned."
-    400:
+    "400":
       description: 'Bad Request : used to indicate that incorrect parameters were passed to the request.'
       content:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/ProblemDetails'
-    403:
+    "403":
       description: 'Forbidden :  operation is not allowed given the current status of the resource.'
       content:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/ProblemDetails'
-    404:
+    "404":
       description: 'Not Found :  used when a client provided a URI that cannot be mapped to a valid resource URI.'
       content:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/ProblemDetails'
-    412:
+    "412":
       description: 'Precondition failed :  used when a condition has failed during conditional requests, e.g. when
         using ETags to avoid write conflicts when using PUT'
       content:
@@ -371,7 +371,7 @@ components:
           description: 'Numeric value (0 - 255) corresponding to specific type of consumer as following:
             0 = APPLICATION_SPECIFIC_BW_ALLOCATION
             1 = SESSION_SPECIFIC_BW_ALLOCATION'
-          type: string
+          type: integer
           enum:
           - 0
           - 1

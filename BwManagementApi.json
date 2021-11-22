@@ -29,9 +29,7 @@
   "paths": {
     "/bw_allocations": {
       "get": {
-        "tags": [
-          "bwm"
-        ],
+        "tags": ["bwm"],
         "summary": "Retrieve information about a list of bandwidthAllocation resources",
         "description": "Retrieves information about a list of bandwidthAllocation resources. Typically used in 'Get configured bandwidth allocation from Bandwidth Management Service' procedure as described in clause 6.2.5.",
         "operationId": "bandwidthAllocationListGET",
@@ -72,9 +70,7 @@
         }
       },
       "post": {
-        "tags": [
-          "bwm"
-        ],
+        "tags": ["bwm"],
         "summary": "Create a bandwidthAllocation resource",
         "description": "Used to create a bandwidthAllocation resource. Typically used in 'Register to Bandwidth Management Service' procedure as described in clause 6.2.1.",
         "operationId": "bandwidthAllocationPOST",
@@ -115,9 +111,7 @@
     },
     "/bw_allocations/{allocationId}": {
       "get": {
-        "tags": [
-          "bwm"
-        ],
+        "tags": ["bwm"],
         "summary": "Retrieve information about a specific bandwidthAllocation",
         "description": "Retrieves information about a bandwidthAllocation resource. Typically used in 'Get configured bandwidth allocation from Bandwidth Management Service' procedure as described in clause 6.2.5.",
         "operationId": "bandwidthAllocationGET",
@@ -149,9 +143,7 @@
         }
       },
       "put": {
-        "tags": [
-          "bwm"
-        ],
+        "tags": ["bwm"],
         "summary": "Update the information about a specific bandwidthAllocation",
         "description": "Updates the information about a bandwidthAllocation resource. As specified in ETSI GS MEC 009 [6], the PUT HTTP method has 'replace' semantics.",
         "operationId": "bandwidthAllocationPUT",
@@ -197,9 +189,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "bwm"
-        ],
+        "tags": ["bwm"],
         "summary": "Modify the information about a specific existing bandwidthAllocation by sending updates on the data structure",
         "description": "Updates the information about a bandwidthAllocation resource. As specified in ETSI GS MEC 009 [6], the PATCH HTTP method updates a resource on top of the existing resource state by just including the changes ('deltas') in the request body.",
         "operationId": "bandwidthAllocationPATCH",
@@ -245,9 +235,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "bwm"
-        ],
+        "tags": ["bwm"],
         "summary": "Remove a specific bandwidthAllocation",
         "description": "Used in 'Unregister from Bandwidth Management Service' procedure as described in clause 6.2.3.",
         "operationId": "bandwidthAllocationDELETE",
@@ -386,9 +374,7 @@
           },
           "fixedBWPriority": {
             "description": "Indicates the allocation priority when dealing with several applications or sessions in parallel. Values are not defined in the present document",
-            "enum": [
-              "SEE_DESCRIPTION"
-            ],
+            "enum": ["SEE_DESCRIPTION"],
             "type": "string",
             "x-etsi-mec-cardinality": "0..1",
             "x-etsi-mec-origin-type": "Enum"
@@ -396,10 +382,7 @@
           "requestType": {
             "description": "Numeric value (0 - 255) corresponding to specific type of consumer as following: 0 = APPLICATION_SPECIFIC_BW_ALLOCATION 1 = SESSION_SPECIFIC_BW_ALLOCATION",
             "type": "integer",
-            "enum": [
-              0,
-              1
-            ],
+            "enum": [0, 1],
             "x-etsi-mec-cardinality": "1",
             "x-etsi-mec-origin-type": "Enum_inlined"
           },
@@ -471,10 +454,7 @@
                 "x-etsi-mec-origin-type": "Uint32"
               }
             },
-            "required": [
-              "seconds",
-              "nanoSeconds"
-            ],
+            "required": ["seconds", "nanoSeconds"],
             "type": "object",
             "x-etsi-mec-cardinality": "0..1",
             "x-etsi-mec-origin-type": "Structure (inlined)"
@@ -511,20 +491,15 @@
           },
           "fixedBWPriority": {
             "description": "Indicates the allocation priority when dealing with several applications or sessions in parallel. Values are not defined in the present document",
-            "enum": [
-              "SEE DESCRIPTION"
-            ],
+            "enum": ["SEE DESCRIPTION"],
             "type": "string",
             "x-etsi-mec-cardinality": "0..1",
             "x-etsi-mec-origin-type": "Enum_inlined"
           },
           "requestType": {
             "description": "Numeric value (0 - 255) corresponding to specific type of consumer as following: 0 = APPLICATION_SPECIFIC_BW_ALLOCATION 1 = SESSION_SPECIFIC_BW_ALLOCATION",
-            "type": "string",
-            "enum": [
-              0,
-              1
-            ],
+            "type": "integer",
+            "enum": [0, 1],
             "x-etsi-mec-cardinality": "1",
             "x-etsi-mec-origin-type": "Enum_inlined"
           },
@@ -579,10 +554,7 @@
             "x-etsi-mec-origin-type": "Structure (inlined)"
           }
         },
-        "required": [
-          "appInsId",
-          "requestType"
-        ],
+        "required": ["appInsId", "requestType"],
         "type": "object",
         "x-etsi-ref": "7.2.3"
       },
